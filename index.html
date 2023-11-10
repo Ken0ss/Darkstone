@@ -3,19 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pulsante GitHub</title>
+    <title>Pulsante Download</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #contenitore {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 
 
-<div>
-    <button onclick="mostraMessaggio()">Clicca Qui</button>
+<div id="contenitore">
+    <button onclick="scaricaFile()">Scarica Darkstone APK</button>
 </div>
 
 
 <script>
-    function mostraMessaggio() {
-        alert("Hai cliccato sul pulsante!");
+    function scaricaFile() {
+        
+        var link = document.createElement("a");
+        link.href = "https://link-del-tuo-file-apk-su-github.com";
+        link.download = "darkstone.apk";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     }
 </script>
 

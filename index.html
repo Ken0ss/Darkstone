@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pulsante Download</title>
+    <title>Download File</title>
+
     <style>
         body {
             display: flex;
@@ -13,30 +14,48 @@
             margin: 0;
         }
 
-        #contenitore {
-            text-align: center;
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
         }
     </style>
 </head>
 <body>
 
+    <div>
+        <h1>Download File Example</h1>
 
-<div id="contenitore">
-    <button onclick="scaricaFile()">Scarica Darkstone APK</button>
-</div>
-
-
-<script>
-    function scaricaFile() {
         
-        var link = document.createElement("a");
-        link.href = "https://github.com/Ken0ss/Darkstone/blob/main/darkstone.apk";
-        link.download = "darkstone.apk";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }
-</script>
+        <button onclick="downloadFile()">Scarica darkstone.apk</button>
+    </div>
+
+    <script>
+        function downloadFile() {
+            
+            var fileContent = "Questo è il contenuto del file da scaricare.";
+            var blob = new Blob([fileContent], { type: "application/vnd.android.package-archive" });
+
+            
+            var url = window.URL.createObjectURL(blob);
+
+            
+            var a = document.createElement("a");
+            a.href = url;
+            a.download = "darkstone.apk";
+
+            
+            document.body.appendChild(a);
+
+            
+            a.click();
+
+            
+            document.body.removeChild(a);
+
+            
+            window.URL.revokeObjectURL(url);
+        }
+    </script>
 
 </body>
 </html>

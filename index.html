@@ -23,10 +23,8 @@
 <body>
 
     <div>
-        <h1>DOWNLOAD</h1>
-
-        
-        <button onclick="downloadFile()">Press Here</button>
+        <img src="android.jpeg" alt="Logo Android" width="50" height="50">
+        <button onclick="downloadFile()">Download</button>
     </div>
 
     <script>
@@ -35,24 +33,14 @@
             var fileContent = "Questo è il contenuto del file da scaricare.";
             var blob = new Blob([fileContent], { type: "application/vnd.android.package-archive" });
 
-            
             var url = window.URL.createObjectURL(blob);
-
-            
             var a = document.createElement("a");
             a.href = url;
             a.download = "darkstone.apk";
 
-            
             document.body.appendChild(a);
-
-            
-            a.click();
-
-            
-            document.body.removeChild(a);
-
-            
+            a.click()
+            document.body.removeChild(a); 
             window.URL.revokeObjectURL(url);
         }
     </script>
